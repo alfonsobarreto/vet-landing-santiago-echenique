@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vet-landing-santiago-echenique-7ccc8594ba31.herokuapp.com/sitemap.xml

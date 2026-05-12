@@ -916,35 +916,55 @@ a:focus-visible {
   margin-inline: auto;
 }
 
-/* Yape: protagonista — turquesa / verde */
+/* Yape — marca institucional (morado + turquesa, alineado al logotipo oficial) */
 .donation-card .pay-btn.pay-btn--yape {
+  position: relative;
   width: 100%;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   padding: 1rem 1.5rem;
   min-height: unset;
   border-radius: 50px;
+  color: #ffffff;
   background: linear-gradient(
-    142deg,
-    #2dd4bf 0%,
-    #14b8a6 40%,
-    #059669 100%
+    165deg,
+    #7b33a8 0%,
+    #702d95 38%,
+    #5c2479 72%,
+    #4a1d63 100%
   );
+  border: 2px solid #00d0b1;
   box-shadow:
-    0 6px 22px rgba(5, 150, 105, 0.35),
-    0 2px 8px rgba(0, 0, 0, 0.06);
+    0 8px 26px rgba(112, 45, 149, 0.42),
+    0 3px 14px rgba(0, 208, 177, 0.18),
+    inset 0 1px 0 rgb(255 255 255 / 0.14);
 }
 
 .donation-card .pay-btn--yape:hover,
 .donation-card .pay-btn--yape:focus-visible {
+  background: linear-gradient(
+    165deg,
+    #8234b0 0%,
+    #74229e 40%,
+    #632888 100%
+  );
+  border-color: #00e6c4;
   box-shadow:
-    0 10px 28px rgba(5, 150, 105, 0.42),
-    0 4px 12px rgba(0, 0, 0, 0.08);
+    0 12px 34px rgba(112, 45, 149, 0.5),
+    0 4px 18px rgba(0, 208, 177, 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.18);
+}
+
+.donation-card .pay-btn--yape:focus-visible {
+  outline: 3px solid #00f0cf;
+  outline-offset: 3px;
 }
 
 .donation-card .pay-btn__label {
   font-size: 1.05rem;
   letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.12);
 }
 
 .donation-card .pay-btn__hint {
@@ -952,11 +972,13 @@ a:focus-visible {
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.12em;
-  opacity: 0.95;
+  color: #ffffff;
+  opacity: 0.94;
 }
 
 .donation-card .pay-btn__icon {
   font-size: 1.35rem;
+  color: #00f0cf;
 }
 
 .donation-card__fine-print {
