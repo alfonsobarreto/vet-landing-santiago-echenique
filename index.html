@@ -5,30 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Santiago Echenique — Asistencia veterinaria profesional."
+      content="Asistencia veterinaria confiable a domicilio en Tarapoto y alrededores por Santiago Echenique, estudiante avanzado de la UNSM. Higiene, prevención, animales mayores."
     />
-    <link
-      rel="canonical"
-      href="https://santiago-echenique-asitencia-veterinaria.herokuapp.com/"
-    />
-    <title>Santiago Echenique | Asistencia Veterinaria</title>
+    <title>Echenique: Asistencia Veterinaria | Tarapoto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="container header__inner">
-        <a href="#" class="logo" aria-label="Inicio">SE · Vet</a>
-        <nav id="site-nav" class="nav" aria-label="Principal">
+        <a href="#" class="logo" aria-label="Inicio">Santiago Echenique</a>
+        <nav class="nav" id="site-nav" aria-label="Principal">
           <ul class="nav__list">
             <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#filosofia">Filosofía</a></li>
+            <li><a href="#tarifario">Tarifario</a></li>
             <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#donaciones">Donaciones</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
@@ -39,16 +43,14 @@
       <section class="hero section" aria-labelledby="hero-heading">
         <div class="container hero__layout">
           <div class="hero__content">
-            <p class="hero__eyebrow">Atención cercana · Urgencias</p>
-            <h1 id="hero-heading">
-              Santiago Echenique · Asistencia Veterinaria
-            </h1>
+            <p class="hero__eyebrow">Asistencia veterinaria</p>
+            <h1 id="hero-heading">Santiago Echenique</h1>
             <p class="lead">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-              eiusmod tempor.
+              Asistencia Veterinaria | Estudiante Líder UNSM. Tarapoto y
+              Alrededores — Soporte Remoto en Moto 24/7.
             </p>
             <div class="hero__actions">
-              <a href="#contacto" class="btn btn--primary">Solicitar turno</a>
+              <a href="#contacto" class="btn btn--primary">Agendar Asistencia</a>
               <a href="#servicios" class="btn btn--outline">Ver servicios</a>
             </div>
           </div>
@@ -59,122 +61,481 @@
       </section>
 
       <section
-        id="servicios"
-        class="services section section--alt"
-        aria-labelledby="services-heading"
+        id="filosofia"
+        class="about section"
+        aria-labelledby="about-heading"
       >
-        <div class="container">
-          <header class="section-head">
-            <h2 id="services-heading">Servicios</h2>
-            <p class="section-head__subtitle">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit integer
-              nec odio praesent.
-            </p>
-          </header>
-          <div class="grid grid--cards">
-            <article class="card">
-              <div class="card__icon card__icon--green" aria-hidden="true"></div>
-              <h3>Urgencias y domicilio</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit sed diam
-                nonummy nibh euismod.
-              </p>
-            </article>
-            <article class="card">
-              <div class="card__icon card__icon--green" aria-hidden="true"></div>
-              <h3>Prevención y vacunación</h3>
-              <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat.
-              </p>
-            </article>
-            <article class="card">
-              <div class="card__icon card__icon--green" aria-hidden="true"></div>
-              <h3>Consulta general</h3>
-              <p>
-                Ut enim ad minim veniam quis nostrud exercitation ullamco laboris
-                nisi ut aliquip.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="sobre" class="about section" aria-labelledby="about-heading">
         <div class="container about__layout">
           <figure class="about__figure" aria-hidden="true"></figure>
           <div class="about__content">
-            <h2 id="about-heading">Sobre el servicio</h2>
+            <h2 id="about-heading">Lo Profesional vs. Lo Natural</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Nuestra identidad propone un equilibrio: la capacidad médica para
+              sanar (UNSM) y la pasión para entender el instinto animal. No solo
+              curamos pacientes, entendemos especies.
             </p>
-            <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </p>
-            <ul class="about__list">
-              <li>Equipo con enfoque en bienestar animal</li>
-              <li>Protocolos claros y comunicación continua</li>
-              <li>Disponibilidad para casos urgentes</li>
-            </ul>
           </div>
         </div>
       </section>
 
       <section
-        id="impacto"
-        class="stats section section--alt"
-        aria-labelledby="stats-heading"
+        id="servicios"
+        class="services section section--alt"
+        aria-labelledby="services-heading"
       >
         <div class="container">
-          <header class="section-head section-head--center">
-            <h2 id="stats-heading">En números</h2>
+          <header class="section-head section-head--wide">
+            <h2 id="services-heading">Ronda de servicios</h2>
             <p class="section-head__subtitle">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed diam.
+              Servicios profesionales a domicilio y en campo con enfoque
+              educativo en zoonosis. Toca una tarjeta para ver detalle médico,
+              imagen orientativa y precio referencial de estudiante.
             </p>
           </header>
-          <div class="grid grid--stats">
-            <div class="stat">
-              <span class="stat__value" aria-hidden="true">120+</span>
-              <span class="stat__label">Consultas atendidas</span>
-            </div>
-            <div class="stat">
-              <span class="stat__value" aria-hidden="true">24/7</span>
-              <span class="stat__label">Lorem ipsum disponibilidad</span>
-            </div>
-            <div class="stat">
-              <span class="stat__value" aria-hidden="true">15</span>
-              <span class="stat__label">Años de experiencia lorem</span>
-            </div>
+          <div class="grid grid--services-round">
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-1"
+                aria-expanded="false"
+                aria-controls="svc-panel-1"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Higiene Clínica a Domicilio</span>
+                <span class="service-card__teaser">
+                  Baño medicado y cuidados completos donde tu mascota se siente más
+                  segura.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-1"
+                role="region"
+                aria-labelledby="svc-btn-1"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=900&q=80"
+                      alt="Higiene veterinaria en el hogar"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Baño medicado, limpieza profunda de oídos, corte de uñas y vaciado
+                    de glándulas anales.
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud · Zoonosis:</strong> la humedad y falta de aseo en
+                      Tarapoto causan otitis severas y hongos que pueden pasar a la
+                      piel de los niños.
+                    </p>
+                  </div>
+                  <p class="price-badge">S/. 25.00 · 45.00 (según tamaño)</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-2"
+                aria-expanded="false"
+                aria-controls="svc-panel-2"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-shield-virus" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Prevención y Zoonosis</span>
+                <span class="service-card__teaser">
+                  Desparasitación integral y vacunación para proteger a toda tu
+                  familia.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-2"
+                role="region"
+                aria-labelledby="svc-btn-2"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1628009368230-5717aadaddff?auto=format&fit=crop&w=900&q=80"
+                      alt="Prevención y vacunas veterinarias"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Desparasitación interna y externa. Aplicación de vacunas (Triple,
+                    Rabia).
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud · Zoonosis:</strong> los parásitos intestinales de
+                      mascotas no tratadas son la causa número uno de infecciones
+                      estomacales en infantes. Protege tu hogar.
+                    </p>
+                  </div>
+                  <p class="price-badge">S/. 30.00</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-3"
+                aria-expanded="false"
+                aria-controls="svc-panel-3"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-tractor" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Animales Mayores (Campo)</span>
+                <span class="service-card__teaser">
+                  Sanidad técnica en zonas rurales: muestras, manejo y bioseguridad.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-3"
+                role="region"
+                aria-labelledby="svc-btn-3"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1500597174179-trac2763833e?auto=format&fit=crop&w=900&q=80"
+                      alt="Ganado vacuno para asistencia en campo"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Asistencia técnica en vacunos, equinos y porcinos. Manejo
+                    sanitario y toma de muestras.
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud · Zoonosis:</strong> mejora la productividad y
+                      evita enfermedades zoonóticas en la cadena alimentaria local.
+                    </p>
+                  </div>
+                  <p class="price-badge price-badge--muted">
+                    Desde S/. 50 · consultar lote / zona
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-4"
+                aria-expanded="false"
+                aria-controls="svc-panel-4"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-user-doctor" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Asistencia Quirúrgica</span>
+                <span class="service-card__teaser">
+                  Apoyo en campañas de esterilización y seguimiento posoperatorio.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-4"
+                role="region"
+                aria-labelledby="svc-btn-4"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1576201836106-db1758fd1c61?auto=format&fit=crop&w=900&q=80"
+                      alt="Veterinario en atención clínica y quirúrgica"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Apoyo en campañas de esterilización y castración. Cuidado
+                    postoperatorio y curaciones.
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud · Zoonosis:</strong> el control poblacional reduce
+                      el riesgo de rabia urbana y la sobrepoblación en las calles de
+                      Tarapoto.
+                    </p>
+                  </div>
+                  <p class="price-badge price-badge--muted">A consultar según campaña</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-5"
+                aria-expanded="false"
+                aria-controls="svc-panel-5"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-motorcycle" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Primeros Auxilios y Emergencias</span>
+                <span class="service-card__teaser">
+                  Atención inmediata en moto 24/7 cuando cada minuto cuenta.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-5"
+                role="region"
+                aria-labelledby="svc-btn-5"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=80"
+                      alt="Mascotas en necesidad de atención rápida y estabilización"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Atención inmediata en moto 24/7. Estabilización y administración de
+                    tratamientos recetados.
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud:</strong> una respuesta rápida en los primeros 30
+                      minutos puede salvar la vida de tu mascota.
+                    </p>
+                  </div>
+                  <p class="price-badge">Desde S/. 15.00</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="ui-card ui-card--interactive service-card">
+              <button
+                type="button"
+                class="service-card__toggle"
+                id="svc-btn-6"
+                aria-expanded="false"
+                aria-controls="svc-panel-6"
+              >
+                <span class="service-card__icon-wrap">
+                  <i class="fa-solid fa-bowl-food" aria-hidden="true"></i>
+                </span>
+                <span class="service-card__title">Asesoría Nutricional</span>
+                <span class="service-card__teaser">
+                  Plan simple de ración según edad y raza, para que el plato también
+                  sea medicina preventiva.
+                </span>
+                <span class="service-card__chevron" aria-hidden="true"></span>
+              </button>
+              <div
+                class="service-card__panel"
+                id="svc-panel-6"
+                role="region"
+                aria-labelledby="svc-btn-6"
+                aria-hidden="true"
+              >
+                <div class="service-card__panel-inner">
+                  <figure class="service-card__figure">
+                    <img
+                      src="https://images.unsplash.com/photo-1589924691985-e400dcb6d8fb?auto=format&fit=crop&w=900&q=80"
+                      alt="Alimentación y nutrición responsable para mascotas"
+                      loading="lazy"
+                      width="900"
+                      height="600"
+                    />
+                  </figure>
+                  <p class="service-card__detail">
+                    Guía de alimentación según etapa de vida y raza.
+                  </p>
+                  <div class="service-card__notice" role="note">
+                    <i
+                      class="fa-solid fa-triangle-exclamation service-card__alert-icon"
+                      aria-hidden="true"
+                    ></i>
+                    <p>
+                      <strong>Salud:</strong> la obesidad animal reduce alrededor de
+                      dos años la vida de tu mascota y genera gastos médicos
+                      evitables.
+                    </p>
+                  </div>
+                  <p class="price-badge">S/. 20.00 · o incluido en otros servicios</p>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="testimonials section" aria-labelledby="testimonials-heading">
+      <section
+        id="tarifario"
+        class="pricing section"
+        aria-labelledby="pricing-heading"
+      >
         <div class="container">
           <header class="section-head">
-            <h2 id="testimonials-heading">Testimonios</h2>
+            <h2 id="pricing-heading">Referencia de tarifario</h2>
             <p class="section-head__subtitle">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit integer vel
-              libero.
+              Valores orientativos de estudiante; el precio final se confirma
+              previa evaluación del caso en Tarapoto y alrededores.
             </p>
           </header>
-          <div class="grid grid--testimonials">
-            <blockquote class="quote card">
-              <p>
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
-                eiusmod tempor incididunt.”
-              </p>
-              <footer>— <cite>Nombre cliente</cite></footer>
-            </blockquote>
-            <blockquote class="quote card">
-              <p>
-                “Ut labore et dolore magna aliqua minim veniam nostrud laboris.”
-              </p>
-              <footer>— <cite>Nombre cliente</cite></footer>
-            </blockquote>
+          <div class="price-table-scroll">
+          <table class="price-table" aria-labelledby="pricing-heading">
+            <thead>
+              <tr>
+                <th scope="col">Servicio</th>
+                <th scope="col">Tarifa referencial</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Higiene clínica a domicilio</th>
+                <td>S/. 25.00 · 45.00 (tamaño)</td>
+              </tr>
+              <tr>
+                <th scope="row">Prevención y zoonosis</th>
+                <td>S/. 30.00</td>
+              </tr>
+              <tr>
+                <th scope="row">Animales mayores (campo)</th>
+                <td>S/. 50.00 · consultar lote / zona</td>
+              </tr>
+              <tr>
+                <th scope="row">Asistencia quirúrgica (campaña)</th>
+                <td>A consultar</td>
+              </tr>
+              <tr>
+                <th scope="row">Primeros auxilios y emergencias 24/7</th>
+                <td>Desde S/. 15.00</td>
+              </tr>
+              <tr>
+                <th scope="row">Asesoría nutricional</th>
+                <td>S/. 20.00 · inclusión posible*</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
+          <p class="price-table-caption">
+            * La asesoría nutricional puede incluirse dentro de otros servicios
+            según coordinación previa.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="impacto"
+        class="impact section section--alt"
+        aria-labelledby="stats-heading"
+      >
+        <div class="container">
+          <header class="section-head section-head--center">
+            <h2 id="stats-heading">Impacto · Zoonosis en la región</h2>
+            <p class="section-head__subtitle">
+              La prevención en casa es el primer paso para proteger a toda la
+              familia.
+            </p>
+          </header>
+          <div class="impact__block ui-card">
+            <p class="impact__stat" aria-label="Noventa por ciento">
+              <span class="impact__stat-value">90%</span>
+            </p>
+            <p class="impact__text">
+              de animales domésticos en la región no tienen control periódico.
+              Esta desatención es el puente principal para enfermedades
+              parasitarias en niños. Cambiemos esta realidad.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="donaciones"
+        class="donations section"
+        aria-labelledby="donations-heading"
+      >
+        <div class="container">
+          <header class="section-head">
+            <h2 id="donations-heading">Apoya el Futuro Veterinario</h2>
+            <p class="section-head__subtitle">
+              «Cada granito de arena me acerca a completar mi formación
+              académica para seguir sirviendo a la comunidad.» Tus aportes
+              financian mis materiales en la UNSM.
+            </p>
+          </header>
+          <div class="donations__actions" role="group" aria-label="Aportes simulados">
+            <button type="button" class="pay-btn pay-btn--yape" data-donation-sim="yape">
+              <span class="pay-btn__icon" aria-hidden="true">
+                <i class="fa-solid fa-qrcode"></i>
+              </span>
+              <span class="pay-btn__label">Yape</span>
+            </button>
+            <button type="button" class="pay-btn pay-btn--plin" data-donation-sim="plin">
+              <span class="pay-btn__icon" aria-hidden="true">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </span>
+              <span class="pay-btn__label">Plin</span>
+            </button>
+          </div>
+          <p class="donations__hint">
+            Botones de demostración: asocia tus números reales para Yape · Plin
+            u otros medios; también puedes usar transferencias bancarias.
+          </p>
         </div>
       </section>
 
@@ -183,15 +544,17 @@
         class="cta section section--accent"
         aria-labelledby="cta-heading"
       >
-        <div class="container cta__inner">
-          <div class="cta__text">
-            <h2 id="cta-heading">Agenda tu consulta</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed diam
-              nonummy nibh euismod tincidunt.
-            </p>
+        <div class="container">
+          <div class="cta__inner ui-card ui-card--cta">
+            <div class="cta__text">
+              <h2 id="cta-heading">Agendar asistencia</h2>
+              <p>
+                Escríbeme por WhatsApp para coordinar visita, domicilio o consulta
+                urgente en Tarapoto y alrededores.
+              </p>
+            </div>
+            <a href="#contacto" class="btn btn--inverse btn--touch" id="cta-whatsapp">Abrir WhatsApp</a>
           </div>
-          <a href="#" class="btn btn--inverse">Escríbenos</a>
         </div>
       </section>
     </main>
@@ -199,26 +562,30 @@
     <footer class="site-footer">
       <div class="container footer__inner">
         <p class="footer__brand">
-          <strong>Santiago Echenique</strong> · Asistencia veterinaria
+          <strong>Santiago Echenique</strong> — Asistencia veterinaria · UNSM ·
+          Tarapoto.
         </p>
         <p class="footer__fine">
-          Lorem ipsum dolor sit © 2026 · Todos los derechos reservados.
+          © 2026 Santiago Echenique. Todos los derechos reservados.
         </p>
         <nav class="footer-nav" aria-label="Pie de página">
           <ul>
-            <li><a href="#">Políticas</a></li>
-            <li><a href="#">Privacidad</a></li>
+            <li><a href="#filosofia">Filosofía</a></li>
+            <li><a href="#tarifario">Tarifario</a></li>
+            <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
       </div>
     </footer>
 
     <a
-      href="https://wa.me/"
+      href="#"
       class="whatsapp-fab"
+      id="whatsapp-fab"
       aria-label="Contactar por WhatsApp"
       title="WhatsApp"
     ></a>
 
+    <script src="script.js" defer></script>
   </body>
 </html>
