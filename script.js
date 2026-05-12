@@ -1,14 +1,16 @@
 "use strict";
 
 /**
- * Número de WhatsApp en formato internacional (sin + ni espacios).
- * Ejemplo Perú: 51 + 9 dígitos del celular.
- * IMPORTANTE: reemplaza por el número real antes de publicar.
+ * Celular para WhatsApp y mismo número como destino para copiar en Yape.
+ * Solo dígitos (sin espacios) para clipboard y enlaces wa.me.
  */
 const WHATSAPP_NUMBER = "51916963593";
 
 const WHATSAPP_MESSAGE =
   "Hola Santiago, vengo de tu página web y necesito asistencia para mi mascota.";
+
+/** Mensaje sobre el botón Yape después de copiar al portapapeles */
+const YAPE_COPY_TOAST_MESSAGE = "¡Número copiado! Pégalo en tu Yape";
 
 function buildWhatsAppHref() {
   const params = new URLSearchParams({ text: WHATSAPP_MESSAGE });
@@ -25,6 +27,74 @@ function initWhatsApp() {
     el.href = url;
     el.target = "_blank";
     el.rel = "noopener noreferrer";
+  });
+}
+
+async function copyDigitsToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {
+    /* fallback */
+  }
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    ta.style.top = "0";
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+function initYapeCopyButton() {
+  const btn = document.querySelector("[data-yape-copy]");
+  const toast = document.getElementById("yape-copy-toast");
+  if (!btn || !toast) return;
+
+  let hideTimer;
+
+  btn.addEventListener("click", async () => {
+    const ok = await copyDigitsToClipboard(WHATSAPP_NUMBER);
+    if (hideTimer) window.clearTimeout(hideTimer);
+
+    if (ok) {
+      toast.textContent = YAPE_COPY_TOAST_MESSAGE;
+      toast.removeAttribute("hidden");
+      toast.classList.add("is-visible");
+      btn.classList.add("pay-btn--pulse");
+      window.setTimeout(() => btn.classList.remove("pay-btn--pulse"), 420);
+      hideTimer = window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+        window.setTimeout(() => {
+          toast.setAttribute("hidden", "hidden");
+          toast.textContent = "";
+        }, 240);
+      }, 3200);
+    } else {
+      toast.textContent =
+        "No se pudo copiar automáticamente. Tu número para Yape es: " +
+        WHATSAPP_NUMBER;
+      toast.removeAttribute("hidden");
+      toast.classList.add("is-visible");
+      hideTimer = window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+        window.setTimeout(() => {
+          toast.setAttribute("hidden", "hidden");
+          toast.textContent = "";
+        }, 240);
+      }, 5000);
+    }
   });
 }
 
@@ -53,15 +123,6 @@ function initServicesAccordion() {
   });
 }
 
-function initDonationDemo() {
-  document.querySelectorAll("[data-donation-sim]").forEach((button) => {
-    button.addEventListener("click", () => {
-      button.classList.add("pay-btn--pulse");
-      window.setTimeout(() => button.classList.remove("pay-btn--pulse"), 400);
-    });
-  });
-}
-
 function initHeaderScroll() {
   const header = document.getElementById("site-header");
   if (!header) return;
@@ -78,6 +139,6 @@ function initHeaderScroll() {
 document.addEventListener("DOMContentLoaded", () => {
   initWhatsApp();
   initServicesAccordion();
-  initDonationDemo();
+  initYapeCopyButton();
   initHeaderScroll();
 });

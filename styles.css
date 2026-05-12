@@ -17,6 +17,7 @@
 
   --font-heading: "Poppins", system-ui, sans-serif;
   --font-body: "Lato", system-ui, sans-serif;
+  --font-quote: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -60,6 +61,18 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 h1,
@@ -244,11 +257,27 @@ a:focus-visible {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-primary);
   text-decoration: none;
   letter-spacing: 0.02em;
+}
+
+.logo__img {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.logo__text {
+  line-height: 1.15;
+  max-width: 12rem;
 }
 
 .logo:hover,
@@ -323,12 +352,14 @@ a:focus-visible {
   min-height: 14rem;
   border-radius: var(--radius-card);
   background:
-    radial-gradient(circle at 30% 30%, rgba(22, 160, 133, 0.25), transparent 50%),
+    radial-gradient(circle at 30% 30%, rgba(22, 160, 133, 0.22), transparent 52%),
     linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--color-primary) 22%, transparent),
-      color-mix(in srgb, var(--color-accent-green) 35%, transparent)
-    );
+        145deg,
+        rgb(109 91 113 / 0.55),
+        rgb(22 160 133 / 0.35)
+      ),
+    url("https://images.pexels.com/photos/6235241/pexels-photo-6235241.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop")
+      center / cover no-repeat;
   box-shadow: var(--shadow-card);
 }
 
@@ -424,11 +455,14 @@ a:focus-visible {
   margin: 0;
   min-height: 12rem;
   border-radius: var(--radius-card);
-  background: linear-gradient(
-    160deg,
-    color-mix(in srgb, var(--color-primary) 35%, var(--color-background)),
-    var(--color-white)
-  );
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-primary) 45%, transparent),
+      color-mix(in srgb, var(--color-accent-green) 25%, transparent)
+    ),
+    url("https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop")
+      center / cover no-repeat;
   box-shadow: var(--shadow-card);
 }
 
@@ -755,18 +789,284 @@ a:focus-visible {
   }
 }
 
-/* ---------- Donaciones ---------- */
-.donations__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
+/* ---------- Tarjeta de apoyo académico ---------- */
+.donation-card {
+  position: relative;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--color-primary) 12%, transparent) 0%,
+      color-mix(in srgb, var(--color-primary) 7%, var(--color-background)) 45%,
+      var(--color-background) 100%
+    );
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
 }
 
+.donation-card__top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.45rem;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-primary) 65%, transparent),
+    var(--color-accent-green),
+    color-mix(in srgb, var(--color-primary) 55%, transparent)
+  );
+}
+
+.donation-card h2 {
+  text-align: center;
+  margin-block: 0 var(--space-xs);
+  position: relative;
+  z-index: 1;
+}
+
+.donation-card__kicker {
+  text-align: center;
+  margin: 0 0 var(--space-md);
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.donation-card__quote {
+  margin: 0;
+  padding: 0 var(--space-sm);
+  border: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.donation-card__quote p {
+  margin: 0;
+  font-family: var(--font-quote);
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.48;
+  color: var(--color-primary);
+  text-align: center;
+  letter-spacing: 0.015em;
+}
+
+.donation-card__quote p::before {
+  content: "“";
+  opacity: 0.45;
+  margin-right: 0.06em;
+}
+
+.donation-card__quote p::after {
+  content: "”";
+  opacity: 0.45;
+  margin-left: 0.06em;
+}
+
+.donation-card__divider {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-md) 0;
+  padding-inline: var(--space-sm);
+}
+
+.donation-card__divider-line {
+  width: min(22rem, 100%);
+  height: 1.25rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 24' fill='none'%3E%3Cpath d='M0 14c40-10 80 10 160 0s120-8 160 6' stroke='%236D5B71' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.donation-card__meta {
+  margin: 0 0 var(--space-md);
+  text-align: center;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  max-width: 32rem;
+  margin-inline: auto;
+  color: var(--color-text);
+}
+
+.donation-card__cta {
+  text-align: center;
+  margin-block: var(--space-md) var(--space-lg);
+}
+
+.donation-card__cta-label {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+}
+
+.donation-card__yape-wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+/* Yape: protagonista — turquesa / verde */
+.donation-card .pay-btn.pay-btn--yape {
+  width: 100%;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 1.5rem;
+  min-height: unset;
+  border-radius: 50px;
+  background: linear-gradient(
+    142deg,
+    #2dd4bf 0%,
+    #14b8a6 40%,
+    #059669 100%
+  );
+  box-shadow:
+    0 6px 22px rgba(5, 150, 105, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.donation-card .pay-btn--yape:hover,
+.donation-card .pay-btn--yape:focus-visible {
+  box-shadow:
+    0 10px 28px rgba(5, 150, 105, 0.42),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.donation-card .pay-btn__label {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.donation-card .pay-btn__hint {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  opacity: 0.95;
+}
+
+.donation-card .pay-btn__icon {
+  font-size: 1.35rem;
+}
+
+.donation-card__fine-print {
+  margin: var(--space-sm) auto 0;
+  max-width: 22rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  opacity: 0.88;
+}
+
+.clipboard-toast {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.85rem);
+  transform: translate(-50%, 0.25rem) scale(0.96);
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-white);
+  background: var(--color-primary);
+  border-radius: 12px;
+  white-space: nowrap;
+  max-width: calc(100vw - 2rem);
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(109, 91, 113, 0.35);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease,
+    visibility 0.22s ease;
+  z-index: 5;
+}
+
+.clipboard-toast::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px 7px 0;
+  border-style: solid;
+  border-color: var(--color-primary) transparent transparent transparent;
+}
+
+.clipboard-toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.donation-card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  justify-content: center;
+  padding-top: var(--space-md);
+  margin-top: var(--space-sm);
+  border-top: 1px solid color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.donation-card__sign {
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--color-primary) 16%, var(--color-white));
+  color: var(--color-primary);
+  font-size: 1.35rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+
+.donation-card__byline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.donation-card__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: var(--color-primary);
+}
+
+.donation-card__role {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 400px) {
+  .clipboard-toast {
+    white-space: normal;
+    max-width: 16rem;
+  }
+}
+
+/* Botón Yape (genérico, por si se reutiliza) */
 .pay-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
+  justify-content: center;
   padding: 0.65rem 1.75rem;
   min-height: 3rem;
   border: 0;
@@ -785,27 +1085,16 @@ a:focus-visible {
 .pay-btn:hover,
 .pay-btn:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .pay-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid color-mix(in srgb, var(--color-accent-green) 85%, transparent);
   outline-offset: 4px;
-}
-
-/* Yape: verde institucional (uso digital) · Plin: morado/azul */
-.pay-btn--yape {
-  background: linear-gradient(135deg, #00bf63 0%, #009946 52%, #007b3f 100%);
-}
-
-.pay-btn--plin {
-  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 45%, #312e81 100%);
 }
 
 .pay-btn__icon {
   display: grid;
   place-items: center;
-  font-size: 1.2rem;
 }
 
 .pay-btn--pulse {
@@ -822,12 +1111,6 @@ a:focus-visible {
   100% {
     transform: scale(1);
   }
-}
-
-.donations__hint {
-  margin-top: var(--space-md);
-  font-size: 0.875rem;
-  opacity: 0.86;
 }
 
 /* ---------- CTA ---------- */
