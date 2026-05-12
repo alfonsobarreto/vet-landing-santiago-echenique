@@ -1,0 +1,16 @@
+{
+  "name": "santiago-echenique-asistencia-veterinaria-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing estática para Heroku (sin relación con cardsocial.me).",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
