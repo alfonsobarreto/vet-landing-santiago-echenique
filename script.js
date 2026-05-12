@@ -1,10 +1,14 @@
 "use strict";
 
 /**
- * Celular para WhatsApp y mismo número como destino para copiar en Yape.
- * Solo dígitos (sin espacios) para clipboard y enlaces wa.me.
+ * Celular completo para WhatsApp (internacional, sin +).
  */
 const WHATSAPP_NUMBER = "51916963593";
+
+/**
+ * Solo 9 dígitos para Yape en Perú (sin código 51 ni espacios).
+ */
+const YAPE_NUMBER_PE = "916963593";
 
 const WHATSAPP_MESSAGE =
   "Hola Santiago, vengo de tu página web y necesito asistencia para mi mascota.";
@@ -65,7 +69,7 @@ function initYapeCopyButton() {
   let hideTimer;
 
   btn.addEventListener("click", async () => {
-    const ok = await copyDigitsToClipboard(WHATSAPP_NUMBER);
+    const ok = await copyDigitsToClipboard(YAPE_NUMBER_PE);
     if (hideTimer) window.clearTimeout(hideTimer);
 
     if (ok) {
@@ -84,7 +88,7 @@ function initYapeCopyButton() {
     } else {
       toast.textContent =
         "No se pudo copiar automáticamente. Tu número para Yape es: " +
-        WHATSAPP_NUMBER;
+        YAPE_NUMBER_PE;
       toast.removeAttribute("hidden");
       toast.classList.add("is-visible");
       hideTimer = window.setTimeout(() => {
