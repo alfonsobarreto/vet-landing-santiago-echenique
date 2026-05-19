@@ -59,7 +59,7 @@ Cliente (navegador)
 - **Diseño responsivo**: layouts y tipografía escalables desde móvil a escritorio (enfoque mobile-first).
 - **Acordeón de servicios**: al expandir cada tarjeta se muestran el detalle del procedimiento, el mensaje de **zoonosis / salud pública** y el precio orientativo de estudiante (donde aplica).
 - **Integración con WhatsApp**: botón en el bloque de contacto y **FAB** (Floating Action Button) fijo; ambos abren `wa.me` con un texto predefinido (el número se configura en código; ver sección [Configuración](#configuración-whatsapp)).
-- **Sección de apoyo / donaciones**: bloque informativo para aportes (Yape / Plin como botones de demostración) destinados a material académico y formación en la UNSM.
+- **Sección de apoyo / donaciones**: bloque para aportes con **Yape**; el botón abre un modal con la imagen del **código QR** y opción de **descargar** la imagen (URL configurable en `script.js`).
 
 ---
 
@@ -89,7 +89,7 @@ La paleta se define en **variables CSS** (`:root` en `styles.css`) para mantener
 .
 ├── index.html      # Marcado semántico y contenido de la landing
 ├── styles.css      # Estilos globales, layout y componentes
-├── script.js       # Acordeón de servicios y URL de WhatsApp
+├── script.js       # Acordeón, WhatsApp, modal Yape (QR) y descarga
 ├── server.js       # Servidor Express y archivos estáticos
 ├── package.json    # Dependencias y script "start"
 ├── package-lock.json
@@ -127,6 +127,8 @@ El servidor escucha en `0.0.0.0` y en el puerto definido por `PORT` si existe (c
 En `script.js`, la constante **`WHATSAPP_NUMBER`** debe ser el número en **formato internacional sin signos `+` ni espacios** (por ejemplo, Perú: código país `51` + dígitos del celular).
 
 Sustituye el valor de marcador antes de publicar en producción para que los enlaces `https://wa.me/...` apunten a la línea correcta.
+
+En el mismo archivo, **`YAPE_QR_IMAGE_URL`** apunta al JPG del QR de Yape (y **`YAPE_QR_DOWNLOAD_FILENAME`** al nombre del archivo al descargar).
 
 ---
 

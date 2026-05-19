@@ -627,27 +627,20 @@
                 <button
                   type="button"
                   class="pay-btn pay-btn--yape donation-card__yape"
-                  aria-label="Copiar número celular para Yape"
-                  data-yape-copy
+                  aria-label="Ver código QR de Yape para donar"
+                  aria-haspopup="dialog"
+                  data-yape-qr-open
                 >
                   <span class="pay-btn__icon" aria-hidden="true">
-                    <i class="fa-solid fa-copy"></i>
+                    <i class="fa-solid fa-qrcode"></i>
                   </span>
-                  <span class="pay-btn__label">Copiar número · Yape</span>
-                  <span class="pay-btn__hint">916 963 593</span>
+                  <span class="pay-btn__label">Ver QR · Yape</span>
+                  <span class="pay-btn__hint">Escanea o guarda la imagen</span>
                 </button>
-                <span
-                  class="clipboard-toast"
-                  id="yape-copy-toast"
-                  role="status"
-                  aria-live="polite"
-                  aria-atomic="true"
-                  hidden
-                ></span>
               </div>
-              <p class="donation-card__fine-print" id="yape-copy-help">
-                Se copian los 9 dígitos en formato nacional (sin código país 51 ni
-                espacios). Abre Yape y pégalo en «buscar por número».
+              <p class="donation-card__fine-print" id="yape-qr-help">
+                Abre el código QR desde tu celular y escanéalo con Yape. También puedes descargar la
+                imagen para usarla cuando quieras.
               </p>
             </div>
 
@@ -710,6 +703,49 @@
       aria-label="Contactar por WhatsApp"
       title="WhatsApp"
     ></a>
+
+    <dialog
+      class="yape-qr-dialog"
+      id="yape-qr-dialog"
+      aria-labelledby="yape-qr-title"
+    >
+      <div class="yape-qr-dialog__surface" role="document">
+        <header class="yape-qr-dialog__header">
+          <h3 id="yape-qr-title">Código QR · Yape</h3>
+          <button
+            type="button"
+            class="yape-qr-dialog__close"
+            aria-label="Cerrar ventana del código QR"
+            data-yape-qr-close
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </header>
+        <div class="yape-qr-dialog__body">
+          <img
+            class="yape-qr-dialog__img"
+            src="https://card-social-api.azurewebsites.net/uploads/1779165760071_f738eaca-2050-4e75-9c15-76f3b701bdfb.jpg"
+            alt="Código QR de Yape — José Santiago Echenique Saavedra"
+            width="320"
+            height="320"
+            loading="eager"
+            decoding="async"
+          />
+          <p class="yape-qr-dialog__hint">
+            En Yape usa la cámara para escanear. Si no puedes descargar, mantén pulsada la imagen para
+            guardarla en tu celular.
+          </p>
+          <button
+            type="button"
+            class="yape-qr-dialog__download"
+            data-yape-qr-download
+          >
+            <i class="fa-solid fa-download" aria-hidden="true"></i>
+            <span>Descargar imagen</span>
+          </button>
+        </div>
+      </div>
+    </dialog>
 
     <script src="script.js" defer></script>
   </body>

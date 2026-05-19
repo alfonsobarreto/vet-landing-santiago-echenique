@@ -5,16 +5,15 @@
  */
 const WHATSAPP_NUMBER = "51916963593";
 
-/**
- * Solo 9 dígitos para Yape en Perú (sin código 51 ni espacios).
- */
-const YAPE_NUMBER_PE = "916963593";
-
 const WHATSAPP_MESSAGE =
   "Hola Santiago, vengo de tu página web y necesito asistencia para mi mascota.";
 
-/** Mensaje sobre el botón Yape después de copiar al portapapeles */
-const YAPE_COPY_TOAST_MESSAGE = "¡Número copiado! Pégalo en tu Yape";
+/** Imagen del código QR para Yape (donaciones). */
+const YAPE_QR_IMAGE_URL =
+  "https://card-social-api.azurewebsites.net/uploads/1779165760071_f738eaca-2050-4e75-9c15-76f3b701bdfb.jpg";
+
+/** Nombre sugerido al descargar el QR. */
+const YAPE_QR_DOWNLOAD_FILENAME = "yape-qr-santiago-echenique.jpg";
 
 function buildWhatsAppHref() {
   const params = new URLSearchParams({ text: WHATSAPP_MESSAGE });
@@ -34,71 +33,62 @@ function initWhatsApp() {
   });
 }
 
-async function copyDigitsToClipboard(text) {
+async function downloadYapeQrImage() {
+  const url = YAPE_QR_IMAGE_URL;
+  const filename = YAPE_QR_DOWNLOAD_FILENAME;
+
   try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
+    const res = await fetch(url, { mode: "cors" });
+    if (!res.ok) throw new Error("bad response");
+    const blob = await res.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = objectUrl;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(objectUrl);
+    return;
   } catch {
-    /* fallback */
+    /* CORS u otro fallo: intentar enlace directo (el navegador puede abrir pestaña). */
   }
-  try {
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "fixed";
-    ta.style.left = "-9999px";
-    ta.style.top = "0";
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    const ok = document.execCommand("copy");
-    document.body.removeChild(ta);
-    return ok;
-  } catch {
-    return false;
-  }
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
-function initYapeCopyButton() {
-  const btn = document.querySelector("[data-yape-copy]");
-  const toast = document.getElementById("yape-copy-toast");
-  if (!btn || !toast) return;
+function initYapeQrDialog() {
+  const openBtn = document.querySelector("[data-yape-qr-open]");
+  const dialog = document.getElementById("yape-qr-dialog");
+  const closeBtn = document.querySelector("[data-yape-qr-close]");
+  const downloadBtn = document.querySelector("[data-yape-qr-download]");
 
-  let hideTimer;
+  if (!openBtn || !dialog || typeof dialog.showModal !== "function") return;
 
-  btn.addEventListener("click", async () => {
-    const ok = await copyDigitsToClipboard(YAPE_NUMBER_PE);
-    if (hideTimer) window.clearTimeout(hideTimer);
+  const closeDialog = () => {
+    if (dialog.open) dialog.close();
+  };
 
-    if (ok) {
-      toast.textContent = YAPE_COPY_TOAST_MESSAGE;
-      toast.removeAttribute("hidden");
-      toast.classList.add("is-visible");
-      btn.classList.add("pay-btn--pulse");
-      window.setTimeout(() => btn.classList.remove("pay-btn--pulse"), 420);
-      hideTimer = window.setTimeout(() => {
-        toast.classList.remove("is-visible");
-        window.setTimeout(() => {
-          toast.setAttribute("hidden", "hidden");
-          toast.textContent = "";
-        }, 240);
-      }, 3200);
-    } else {
-      toast.textContent =
-        "No se pudo copiar automáticamente. Tu número para Yape es: " +
-        YAPE_NUMBER_PE;
-      toast.removeAttribute("hidden");
-      toast.classList.add("is-visible");
-      hideTimer = window.setTimeout(() => {
-        toast.classList.remove("is-visible");
-        window.setTimeout(() => {
-          toast.setAttribute("hidden", "hidden");
-          toast.textContent = "";
-        }, 240);
-      }, 5000);
-    }
+  openBtn.addEventListener("click", () => {
+    dialog.showModal();
+  });
+
+  closeBtn?.addEventListener("click", closeDialog);
+
+  dialog.addEventListener("click", (e) => {
+    if (e.target === dialog) closeDialog();
+  });
+
+  downloadBtn?.addEventListener("click", () => {
+    void downloadYapeQrImage();
   });
 }
 
@@ -143,6 +133,6 @@ function initHeaderScroll() {
 document.addEventListener("DOMContentLoaded", () => {
   initWhatsApp();
   initServicesAccordion();
-  initYapeCopyButton();
+  initYapeQrDialog();
   initHeaderScroll();
 });

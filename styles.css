@@ -970,8 +970,8 @@ a:focus-visible {
 .donation-card .pay-btn__hint {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
   color: #ffffff;
   opacity: 0.94;
 }
@@ -990,48 +990,151 @@ a:focus-visible {
   opacity: 0.88;
 }
 
-.clipboard-toast {
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 0.85rem);
-  transform: translate(-50%, 0.25rem) scale(0.96);
-  padding: 0.55rem 0.9rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--color-white);
-  background: var(--color-primary);
-  border-radius: 12px;
-  white-space: nowrap;
+/* Modal QR Yape */
+.yape-qr-dialog {
+  padding: 0;
+  border: none;
+  border-radius: 18px;
   max-width: calc(100vw - 2rem);
-  text-align: center;
-  box-shadow: 0 8px 28px rgba(109, 91, 113, 0.35);
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
+  width: min(22rem, 100%);
+  background: transparent;
+  color: var(--color-text);
+}
+
+.yape-qr-dialog::backdrop {
+  background: rgba(31, 24, 40, 0.52);
+  backdrop-filter: blur(5px);
+}
+
+.yape-qr-dialog__surface {
+  background: var(--color-white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 48px rgba(70, 42, 94, 0.28),
+    0 10px 26px rgba(0, 208, 177, 0.12);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+.yape-qr-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0.85rem 1rem 0.65rem;
+  background: linear-gradient(
+    165deg,
+    #74229e 0%,
+    #5c2479 55%,
+    #4a1d63 100%
+  );
+  color: #ffffff;
+}
+
+.yape-qr-dialog__header h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 0.14);
+}
+
+.yape-qr-dialog__close {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.14);
+  color: #ffffff;
+  font-size: 1.25rem;
+  cursor: pointer;
   transition:
-    opacity 0.22s ease,
-    transform 0.22s ease,
-    visibility 0.22s ease;
-  z-index: 5;
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.clipboard-toast::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -7px;
-  border-width: 7px 7px 0;
-  border-style: solid;
-  border-color: var(--color-primary) transparent transparent transparent;
+.yape-qr-dialog__close:hover,
+.yape-qr-dialog__close:focus-visible {
+  background: rgb(255 255 255 / 0.24);
+  outline: none;
 }
 
-.clipboard-toast.is-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0) scale(1);
+.yape-qr-dialog__close:focus-visible {
+  outline: 3px solid #00f0cf;
+  outline-offset: 2px;
+}
+
+.yape-qr-dialog__body {
+  padding: 1rem 1.125rem 1.25rem;
+  text-align: center;
+}
+
+.yape-qr-dialog__img {
+  display: block;
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
+  margin-inline: auto;
+  border-radius: 12px;
+  background: #f6f4f8;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
+
+.yape-qr-dialog__hint {
+  margin: 0.85rem 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  opacity: 0.92;
+}
+
+.yape-qr-dialog__download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 18rem;
+  margin-inline: auto;
+  padding: 0.7rem 1rem;
+  border: 2px solid #00d0b1;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(165deg, #8234b0 0%, #6b2a93 45%, #57237a 100%);
+  box-shadow: 0 6px 22px rgba(112, 45, 149, 0.32);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.yape-qr-dialog__download i {
+  font-size: 1rem;
+  color: #00f0cf;
+}
+
+.yape-qr-dialog__download:hover,
+.yape-qr-dialog__download:focus-visible {
+  transform: translateY(-2px);
+  border-color: #00e6c4;
+  box-shadow:
+    0 10px 28px rgba(112, 45, 149, 0.42),
+    0 3px 14px rgba(0, 208, 177, 0.2);
+  outline: none;
+}
+
+.yape-qr-dialog__download:focus-visible {
+  outline: 3px solid #00f0cf;
+  outline-offset: 3px;
 }
 
 .donation-card__footer {
@@ -1076,14 +1179,6 @@ a:focus-visible {
   color: var(--color-text);
 }
 
-@media (max-width: 400px) {
-  .clipboard-toast {
-    white-space: normal;
-    max-width: 16rem;
-  }
-}
-
-/* Botón Yape (genérico, por si se reutiliza) */
 .pay-btn {
   display: inline-flex;
   align-items: center;
@@ -1117,22 +1212,6 @@ a:focus-visible {
 .pay-btn__icon {
   display: grid;
   place-items: center;
-}
-
-.pay-btn--pulse {
-  animation: donation-pulse 0.42s ease;
-}
-
-@keyframes donation-pulse {
-  0% {
-    transform: scale(1);
-  }
-  55% {
-    transform: scale(1.035);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 /* ---------- CTA ---------- */
