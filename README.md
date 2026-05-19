@@ -59,7 +59,7 @@ Cliente (navegador)
 - **Diseño responsivo**: layouts y tipografía escalables desde móvil a escritorio (enfoque mobile-first).
 - **Acordeón de servicios**: al expandir cada tarjeta se muestran el detalle del procedimiento, el mensaje de **zoonosis / salud pública** y el precio orientativo de estudiante (donde aplica).
 - **Integración con WhatsApp**: botón en el bloque de contacto y **FAB** (Floating Action Button) fijo; ambos abren `wa.me` con un texto predefinido (el número se configura en código; ver sección [Configuración](#configuración-whatsapp)).
-- **Sección de apoyo / donaciones**: bloque para aportes con **Yape**; el botón abre un modal con la imagen del **código QR** y opción de **descargar** la imagen (URL configurable en `script.js`).
+- **Sección de apoyo / donaciones**: bloque para aportes con **Yape**; el botón abre un modal con el **código QR** y un texto corto sobre escanear o usar **captura de pantalla**. La URL de la imagen del QR está en el `<dialog>` dentro de `index.html`.
 
 ---
 
@@ -89,7 +89,7 @@ La paleta se define en **variables CSS** (`:root` en `styles.css`) para mantener
 .
 ├── index.html      # Marcado semántico y contenido de la landing
 ├── styles.css      # Estilos globales, layout y componentes
-├── script.js       # Acordeón, WhatsApp, modal Yape (QR) y descarga
+├── script.js       # Acordeón, WhatsApp y modal Yape (QR)
 ├── server.js       # Servidor Express y archivos estáticos
 ├── package.json    # Dependencias y script "start"
 ├── package-lock.json
@@ -128,7 +128,7 @@ En `script.js`, la constante **`WHATSAPP_NUMBER`** debe ser el número en **form
 
 Sustituye el valor de marcador antes de publicar en producción para que los enlaces `https://wa.me/...` apunten a la línea correcta.
 
-En el mismo archivo, **`YAPE_QR_IMAGE_URL`** apunta al JPG del QR de Yape (y **`YAPE_QR_DOWNLOAD_FILENAME`** al nombre del archivo al descargar).
+La imagen del QR de **Yape** está en el modal dentro de **`index.html`** (atributo `src` de la etiqueta `<img>` del diálogo `yape-qr-dialog`).
 
 ---
 

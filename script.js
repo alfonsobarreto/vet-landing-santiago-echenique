@@ -8,13 +8,6 @@ const WHATSAPP_NUMBER = "51916963593";
 const WHATSAPP_MESSAGE =
   "Hola Santiago, vengo de tu página web y necesito asistencia para mi mascota.";
 
-/** Imagen del código QR para Yape (donaciones). */
-const YAPE_QR_IMAGE_URL =
-  "https://card-social-api.azurewebsites.net/uploads/1779165760071_f738eaca-2050-4e75-9c15-76f3b701bdfb.jpg";
-
-/** Nombre sugerido al descargar el QR. */
-const YAPE_QR_DOWNLOAD_FILENAME = "yape-qr-santiago-echenique.jpg";
-
 function buildWhatsAppHref() {
   const params = new URLSearchParams({ text: WHATSAPP_MESSAGE });
   return `https://wa.me/${WHATSAPP_NUMBER}?${params.toString()}`;
@@ -33,43 +26,10 @@ function initWhatsApp() {
   });
 }
 
-async function downloadYapeQrImage() {
-  const url = YAPE_QR_IMAGE_URL;
-  const filename = YAPE_QR_DOWNLOAD_FILENAME;
-
-  try {
-    const res = await fetch(url, { mode: "cors" });
-    if (!res.ok) throw new Error("bad response");
-    const blob = await res.blob();
-    const objectUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = objectUrl;
-    a.download = filename;
-    a.rel = "noopener";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(objectUrl);
-    return;
-  } catch {
-    /* CORS u otro fallo: intentar enlace directo (el navegador puede abrir pestaña). */
-  }
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  a.target = "_blank";
-  a.rel = "noopener noreferrer";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
 function initYapeQrDialog() {
   const openBtn = document.querySelector("[data-yape-qr-open]");
   const dialog = document.getElementById("yape-qr-dialog");
   const closeBtn = document.querySelector("[data-yape-qr-close]");
-  const downloadBtn = document.querySelector("[data-yape-qr-download]");
 
   if (!openBtn || !dialog || typeof dialog.showModal !== "function") return;
 
@@ -85,10 +45,6 @@ function initYapeQrDialog() {
 
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog) closeDialog();
-  });
-
-  downloadBtn?.addEventListener("click", () => {
-    void downloadYapeQrImage();
   });
 }
 

@@ -1086,55 +1086,11 @@ a:focus-visible {
 }
 
 .yape-qr-dialog__hint {
-  margin: 0.85rem 0 1rem;
+  margin: 0.85rem 0 0;
   font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--color-text);
   opacity: 0.92;
-}
-
-.yape-qr-dialog__download {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  max-width: 18rem;
-  margin-inline: auto;
-  padding: 0.7rem 1rem;
-  border: 2px solid #00d0b1;
-  border-radius: 50px;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.9375rem;
-  cursor: pointer;
-  color: #ffffff;
-  background: linear-gradient(165deg, #8234b0 0%, #6b2a93 45%, #57237a 100%);
-  box-shadow: 0 6px 22px rgba(112, 45, 149, 0.32);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.yape-qr-dialog__download i {
-  font-size: 1rem;
-  color: #00f0cf;
-}
-
-.yape-qr-dialog__download:hover,
-.yape-qr-dialog__download:focus-visible {
-  transform: translateY(-2px);
-  border-color: #00e6c4;
-  box-shadow:
-    0 10px 28px rgba(112, 45, 149, 0.42),
-    0 3px 14px rgba(0, 208, 177, 0.2);
-  outline: none;
-}
-
-.yape-qr-dialog__download:focus-visible {
-  outline: 3px solid #00f0cf;
-  outline-offset: 3px;
 }
 
 .donation-card__footer {
