@@ -614,16 +614,26 @@ a:focus-visible {
 
 .service-card__notice {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.75rem;
   align-items: flex-start;
   margin-block: 0 0.9rem;
-  padding: 0.85rem var(--space-sm);
+  padding: 0.95rem 0.95rem 0.95rem 0.85rem;
   font-size: 0.895rem;
   line-height: 1.52;
   color: var(--color-text);
-  background: color-mix(in srgb, var(--color-accent-orange) 8%, var(--color-white));
-  border-radius: 12px;
-  border: 1px solid rgba(211, 84, 0, 0.2);
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-primary) 7%, var(--color-white)),
+    color-mix(in srgb, var(--color-accent-green) 11%, var(--color-white)),
+    color-mix(in srgb, var(--color-background) 40%, var(--color-white))
+  );
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+  border-inline-start-width: 3px;
+  border-inline-start-color: color-mix(in srgb, var(--color-accent-green) 62%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.7),
+    0 2px 14px rgba(109, 91, 113, 0.07);
 }
 
 .service-card__notice p {
@@ -631,14 +641,28 @@ a:focus-visible {
 }
 
 .service-card__notice strong {
-  color: var(--color-primary);
+  color: color-mix(in srgb, var(--color-primary) 92%, #2d2640);
 }
 
-.service-card__alert-icon {
+.service-card__notice-badge {
   flex-shrink: 0;
-  margin-top: 0.125rem;
-  color: var(--color-accent-orange);
-  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.05rem;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.75);
+  color: color-mix(in srgb, var(--color-accent-green) 88%, #0d4a41);
+  font-size: 1.05rem;
+  box-shadow:
+    0 1px 4px rgb(22 160 133 / 0.12),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+  border: 1px solid color-mix(in srgb, var(--color-accent-green) 26%, transparent);
+}
+
+.service-card__notice-icon {
+  line-height: 1;
 }
 
 .price-badge {
