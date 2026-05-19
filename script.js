@@ -27,18 +27,20 @@ function initWhatsApp() {
 }
 
 function initYapeQrDialog() {
-  const openBtn = document.querySelector("[data-yape-qr-open]");
+  const openBtns = document.querySelectorAll("[data-yape-qr-open]");
   const dialog = document.getElementById("yape-qr-dialog");
   const closeBtn = document.querySelector("[data-yape-qr-close]");
 
-  if (!openBtn || !dialog || typeof dialog.showModal !== "function") return;
+  if (!openBtns.length || !dialog || typeof dialog.showModal !== "function") return;
 
   const closeDialog = () => {
     if (dialog.open) dialog.close();
   };
 
-  openBtn.addEventListener("click", () => {
-    dialog.showModal();
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      dialog.showModal();
+    });
   });
 
   closeBtn?.addEventListener("click", closeDialog);

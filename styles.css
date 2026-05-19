@@ -760,6 +760,72 @@ a:focus-visible {
   padding-bottom: 0.125rem;
 }
 
+.pricing-head__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-block-end: 0.5rem;
+}
+
+.pricing-head__row h2 {
+  margin-block: 0;
+}
+
+.pricing-yape-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.32rem 0.7rem 0.32rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 16%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--color-primary) 85%, #1e1622);
+  background: rgb(255 255 255 / 0.55);
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.pricing-yape-chip .fa-qrcode {
+  font-size: 0.8125rem;
+  color: color-mix(in srgb, var(--color-accent-green) 75%, var(--color-primary));
+  opacity: 0.92;
+}
+
+.pricing-yape-chip:hover,
+.pricing-yape-chip:focus-visible {
+  border-color: color-mix(in srgb, var(--color-accent-green) 35%, var(--color-primary));
+  background: color-mix(in srgb, var(--color-accent-green) 8%, var(--color-white));
+  outline: none;
+}
+
+.pricing-yape-chip:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent-green) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.pricing-yape-hint {
+  margin-block: var(--space-sm) 0;
+  max-width: 36rem;
+  font-size: 0.8675rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  opacity: 0.86;
+}
+
+.pricing-yape-hint strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
 .price-table-scroll .price-table {
   min-width: min(36rem, 100%);
 }
